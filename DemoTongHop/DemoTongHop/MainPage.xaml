@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="DemoTongHop.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DemoTongHop"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition> 
+        </Grid.RowDefinitions>
+        <RelativePanel>
+            <Border BorderThickness="0" Width="Auto" Height="32">
+                <TextBlock Text="Universal Application" TextAlignment="Center" Foreground="DarkRed" FontWeight="Bold"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <TextBox x:Name="txtSearch" PlaceholderText="Search content..."
+                     RelativePanel.LeftOf="btnSearch" Width="150"></TextBox>
+            <Button x:Name="btnSearch" Content="Search" Background="Green" Foreground="White"
+                    RelativePanel.AlignRightWithPanel="True"></Button>
+        </RelativePanel>
+        <RelativePanel Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="lblItem" Text="Items:" Margin="0,0,5,0"></TextBlock>
+                <TextBlock x:Name="lblItemVal" Text="20"></TextBlock>
+            </StackPanel>
+
+            <TextBlock x:Name="lblVersion" Text="v1.2.0"
+                       RelativePanel.AlignRightWithPanel="True"></TextBlock>
+
+            <StackPanel Orientation="Horizontal" 
+                        RelativePanel.AlignHorizontalCenterWithPanel="True">
+                <TextBlock x:Name="lblUser" Text="User:" Margin="0,0,5,0"></TextBlock>
+                <TextBlock x:Name="lblUserVal" Text="admin"></TextBlock>
+            </StackPanel>
+        </RelativePanel>
+    </Grid>
+</Page>

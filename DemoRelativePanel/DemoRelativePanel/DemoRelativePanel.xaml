@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="DemoRelativePanel.DemoRelativePanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DemoRelativePanel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel Margin="50" BorderThickness="5" BorderBrush="DarkMagenta">
+        <Rectangle x:Name="RedRec" Fill="Red" Width="200" Height="200"></Rectangle>
+        <Rectangle x:Name="BlueRec" Fill="Blue" Width="150" Height="100" 
+                   RelativePanel.RightOf="RedRec"></Rectangle>
+        <Rectangle x:Name="GreenRec" Fill="Green" Width="150" Height="100"
+                   RelativePanel.Below="BlueRec"
+                   RelativePanel.RightOf="RedRec"></Rectangle>
+        <Rectangle x:Name="VioletRec" Fill="Violet" Width="150" Height="50"
+                   RelativePanel.Above="GreenRec"
+                   RelativePanel.Below="BlueRec"
+                   ></Rectangle>
+    </RelativePanel>
+</Page>
