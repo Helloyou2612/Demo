@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="DemoSplitView.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DemoSplitView"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <SplitView x:Name="MySplitView" 
+                   DisplayMode="CompactInline"  
+                   IsPaneOpen="True"   
+                   CompactPaneLength="50" 
+                   OpenPaneLength="250"
+                   >
+            <SplitView.Pane>
+                <StackPanel Background="Bisque">
+                    <Button x:Name="btnHamburger" 
+                            FontFamily="Segoe MDL2 Assets" 
+                            Content="&#xE700;"  
+                            Width="50" Height="50" 
+                            Background="Transparent" 
+                            Click="BtnHamburger_OnClick"/>
+                    <StackPanel x:Name="spMPV" 
+                                Orientation="Horizontal">
+                        <Button x:Name="btnMPV" 
+                                FontFamily="Segoe MDL2 Assets" 
+                                Content="&#xE12B;"  
+                                Width="50" Height="50" 
+                                Background="Transparent" 
+                                Click="BtnMVP_OnClick"/>
+                        <TextBlock Text="MPV" 
+                                   FontSize="18" 
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel x:Name="spHatchBack" 
+                                Orientation="Horizontal" >
+                        <Button x:Name="btnHatchBack" 
+                                FontFamily="Segoe MDL2 Assets" 
+                                Content="&#xE13D;"  
+                                Width="50" 
+                                Height="50" 
+                                Background="Transparent"
+                                Click="BtnHatchBack_OnClick"/>
+                        <TextBlock Text="HatchBack" 
+                                   FontSize="18" 
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel x:Name="spSedan" 
+                                Orientation="Horizontal" >
+                        <Button x:Name="btnSedan" 
+                                FontFamily="Segoe MDL2 Assets" 
+                                Content="&#xE751;"  
+                                Width="50" 
+                                Height="50" 
+                                Background="Transparent"
+                                Click="BtnSedan_OnClick"/>
+                        <TextBlock Text="Sedan" 
+                                   FontSize="18" 
+                                   VerticalAlignment="Center" />
+                    </StackPanel>
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <GridView 
+                    x:Name="GridView"
+                    ItemsSource="{x:Bind Cars, Mode=OneWay}"
+                    IsItemClickEnabled="True"
+                    ItemClick="GridView_OnItemClick">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="local:CarModel">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Image 
+                                    x:Name="imgCar" 
+                                    Source="{x:Bind Image}"></Image>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                    <TextBlock Text="{x:Bind Category}"></TextBlock>
+                                    <TextBlock Text="-"></TextBlock>
+                                    <TextBlock Text="{x:Bind Model}"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>
