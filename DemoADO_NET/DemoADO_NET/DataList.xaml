@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="DemoADO_NET.DataList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DemoADO_NET"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Grid.Row="1">
+            <ListView Name="ProductList"
+                  SelectionMode="Single"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.IsVerticalRailEnabled="True"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.IsHorizontalRailEnabled="True"
+                  Margin="20">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal"  >
+                            <TextBlock Text="ID" Margin="8,0" Width="50" Foreground="Blue" />
+                            <TextBlock Text="Name" Width="300" Foreground="Blue" />
+                            <TextBlock Text="Type" Width="150" Foreground="Blue" />
+                            <TextBlock Text="Price" Width="80" Foreground="Blue" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Product">
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Name="ItemId"
+                                    Text="{x:Bind Id}"
+                                    Width="50" />
+                            <TextBlock Name="ItemName"
+                                    Text="{x:Bind Name}"
+                                    Width="300" />
+                            <TextBlock Text="{x:Bind Type}"
+                                   Width="150" />
+                            <TextBlock Text="{x:Bind Price}"
+                                   Width="80" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>

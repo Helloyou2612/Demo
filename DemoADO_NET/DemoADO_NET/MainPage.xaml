@@ -8,7 +8,27 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
+    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <RelativePanel>
+                <Button x:Name="btnSearch"
+                        Width="100"
+                        RelativePanel.RightOf="txtSearch"
+                        Click="BtnSearch_OnClick">Search</Button>
+                <TextBox x:Name="txtSearch" 
+                         PlaceholderText="Search content..."
+                         RelativePanel.AlignLeftWithPanel="True"></TextBox>
+                <Button x:Name="btnAdd" 
+                        Width="100"
+                        RelativePanel.AlignRightWithPanel="True"
+                        Click="BtnAdd_OnClick">Add</Button>
+            </RelativePanel>
+        </StackPanel>
+        
+        <Frame Grid.Row="1" x:Name="MyFrame"></Frame>
     </Grid>
 </Page>
