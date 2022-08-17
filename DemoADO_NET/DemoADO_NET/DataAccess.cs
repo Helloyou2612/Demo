@@ -82,6 +82,50 @@ namespace DemoADO_NET
             return products;
         }
 
+        public Product GetProductDetail(long id)
+        {
+            var product = new Product();
+            try
+            {
+                if (_conn.State == ConnectionState.Closed)
+                    _conn.Open();
+                //Build sql query
+                var query = "SELECT Id, Name, Type, Price FROM Product WHERE Id = @Id";
+                //Create SqlCommand object
+                var cmd = new SqlCommand(query, _conn);
+                //Add param for search conditions
+                cmd.Parameters.AddWithValue("@Id", id);
+                //Executed sql query
+                var dataReader = cmd.ExecuteReader();
+                //Check dataReader hasRows before reader data
+                if (!dataReader.HasRows)
+                    return null;
+                //Read data from DataReader
+                while (dataReader.Read())
+                {
+
+                    product = new Product
+                    {
+                        Id = id,
+                        Name = dataReader["Name"].ToString(),
+                        Type = dataReader["Type"].ToString(),
+                        Price = Convert.ToDecimal(dataReader["Price"])
+                    };
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+
+            return product;
+        }
+
         public bool CreateProduct(Product model)
         {
             var rowEff = 0;
@@ -111,5 +155,61 @@ namespace DemoADO_NET
             return rowEff > 0;
         }
 
+        public bool EditProduct(Product model)
+        {
+            var rowEff = 0;
+            try
+            {
+                if (_conn.State == ConnectionState.Closed)
+                    _conn.Open();
+
+                var query = "UPDATE Product SET Name=@Name, Type=@Type, Price=@Price WHERE Id=@Id";
+
+                var commad = new SqlCommand(query, _conn);
+                commad.Parameters.AddWithValue("@Id", model.Id);
+                commad.Parameters.AddWithValue("@Name", model.Name);
+                commad.Parameters.AddWithValue("@Type", model.Type);
+                commad.Parameters.AddWithValue("@Price", model.Price);
+
+                rowEff = commad.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+
+            return rowEff > 0;
+        }
+
+        public bool DeleteProduct(long id)
+        {
+            var rowEff = 0;
+            try
+            {
+                if (_conn.State == ConnectionState.Closed)
+                    _conn.Open();
+
+                var query = "DELETE FROM Product WHERE Id = @Id";
+
+                var commad = new SqlCommand(query, _conn);
+                commad.Parameters.AddWithValue("@Id", id);
+
+                rowEff = commad.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+
+            return rowEff > 0;
+        }
     }
 }

@@ -126,6 +126,12 @@
     <Compile Include="DataList.xaml.cs">
       <DependentUpon>DataList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DetailView.xaml.cs">
+      <DependentUpon>DetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditVIew.xaml.cs">
+      <DependentUpon>EditVIew.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -157,6 +163,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DataList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditVIew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

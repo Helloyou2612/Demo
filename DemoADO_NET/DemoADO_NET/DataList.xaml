@@ -18,7 +18,8 @@
                   ScrollViewer.HorizontalScrollMode="Enabled"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.IsHorizontalRailEnabled="True"
-                  Margin="20">
+                  Margin="20"
+                  SelectionChanged="ProductList_OnSelectionChanged">
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"  >
@@ -26,6 +27,7 @@
                             <TextBlock Text="Name" Width="300" Foreground="Blue" />
                             <TextBlock Text="Type" Width="150" Foreground="Blue" />
                             <TextBlock Text="Price" Width="80" Foreground="Blue" />
+                            <TextBlock Text="Action" Width="100" Foreground="Blue" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.HeaderTemplate>
@@ -42,6 +44,15 @@
                                    Width="150" />
                             <TextBlock Text="{x:Bind Price}"
                                    Width="80" />
+
+                            <Button Name="flyoutMenuButton" Content="Action">
+                                <Button.Flyout>
+                                    <MenuFlyout Placement="Left">
+                                        <MenuFlyoutItem Text="Edit" Click="MenuEdit_OnClick"/>
+                                        <MenuFlyoutItem Text="Delete" Click="MenuDel_OnClick"/>
+                                    </MenuFlyout>
+                                </Button.Flyout>
+                            </Button>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
