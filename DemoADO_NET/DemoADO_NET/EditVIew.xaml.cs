@@ -23,6 +23,7 @@ namespace DemoADO_NET
     public sealed partial class EditVIew : Page
     {
         private readonly DataAccess _dataAccess;
+        private long _id;
         public EditVIew()
         {
             this.InitializeComponent();
@@ -31,12 +32,20 @@ namespace DemoADO_NET
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var data = (Product)e.Parameter;
-            this.DataContext = data;
+            _id = (long)e.Parameter;
+            this.DataContext = _dataAccess.GetProductDetail(_id);
         }
 
         private void BtnEdit_OnClick(object sender, RoutedEventArgs e)
         {
+            _dataAccess.EditProduct(new Product()
+            {
+                Id = _id,
+                Name = this.txtName.Text,
+                Type = this.txtType.Text,
+                Price = decimal.Parse(this.txtPrice.Text)
+            });
+
             Frame.Navigate(typeof(DataList), _dataAccess.GetProducts(string.Empty));
         }
     }

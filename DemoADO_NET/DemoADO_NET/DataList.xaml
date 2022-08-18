@@ -48,8 +48,8 @@
                             <Button Name="flyoutMenuButton" Content="Action">
                                 <Button.Flyout>
                                     <MenuFlyout Placement="Left">
-                                        <MenuFlyoutItem Text="Edit" Click="MenuEdit_OnClick"/>
-                                        <MenuFlyoutItem Text="Delete" Click="MenuDel_OnClick"/>
+                                        <MenuFlyoutItem x:Name="btnEdit" Text="Edit" Click="MenuEdit_OnClick" Tag="{x:Bind Id}"/>
+                                        <MenuFlyoutItem x:Name="btnDel" Text="Delete" Click="MenuDel_OnClick" Tag="{x:Bind Id}"/>
                                     </MenuFlyout>
                                 </Button.Flyout>
                             </Button>

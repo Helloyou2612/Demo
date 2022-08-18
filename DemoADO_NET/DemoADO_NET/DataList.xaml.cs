@@ -1,16 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -18,39 +9,85 @@ using Windows.UI.Xaml.Navigation;
 namespace DemoADO_NET
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    ///     An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class DataList : Page
     {
+        private readonly DataAccess _dataAccess;
+        private long _id;
+
         public DataList()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            _dataAccess = new DataAccess();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             var data = (List<Product>)e.Parameter;
-            this.ProductList.ItemsSource = data;
+            ProductList.ItemsSource = data;
         }
 
         private void ProductList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var obj = (Product)this.ProductList.SelectedItem;
+            var obj = (Product)ProductList.SelectedItem;
             Frame.Navigate(typeof(DetailView), obj);
         }
-        
+
 
         private void MenuEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            var data = sender as MenuFlyoutItem;
+            var obj = (MenuFlyoutItem)sender;
             //Get data of row selected
-
-            Frame.Navigate(typeof(EditVIew), data);
+            _id = long.Parse(obj.Tag.ToString());
+            Frame.Navigate(typeof(EditVIew), _id);
         }
 
-        private void MenuDel_OnClick(object sender, RoutedEventArgs e)
+        private async void MenuDel_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var contentDialog = new ContentDialog
+            {
+                Title = "Delete",
+                Content = "You are sure to delete the item selected!",
+                CloseButtonText = "Cancel",
+                PrimaryButtonText = "Delete",
+                DefaultButton = ContentDialogButton.Close
+            };
+
+            var obj = (MenuFlyoutItem)sender;
+            //Get data of row selected
+            _id = long.Parse(obj.Tag.ToString());
+            
+            #region solution 1
+            var result = await contentDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                _dataAccess.DeleteProduct(_id);
+                ProductList.ItemsSource = _dataAccess.GetProducts(string.Empty);
+            }
+            #endregion solution 1
+
+            #region solution 2
+
+            //contentDialog.PrimaryButtonClick += Dialog_PrimaryButtonClick;
+            //await contentDialog.ShowAsync();
+            #endregion solution 2
+
+            #region solution 3
+            //contentDialog.PrimaryButtonClick += async (dialog, args) =>
+            //{
+            //    _dataAccess.DeleteProduct(_id);
+            //    ProductList.ItemsSource = _dataAccess.GetProducts(string.Empty);
+            //    await contentDialog.ShowAsync();
+            //};
+
+            #endregion solution 3
+        }
+
+        private void Dialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            _dataAccess.DeleteProduct(_id);
+            ProductList.ItemsSource = _dataAccess.GetProducts(string.Empty);
         }
     }
 }
