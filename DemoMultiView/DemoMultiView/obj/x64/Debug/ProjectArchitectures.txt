@@ -1,0 +1,1 @@
+E:\7.Company\10. FPT Aptech\Demo\UWP\Demo\DemoMultiView\DemoMultiView\DemoMultiView.csproj;x64
