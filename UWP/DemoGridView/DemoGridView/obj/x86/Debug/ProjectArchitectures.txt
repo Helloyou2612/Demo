@@ -1,1 +1,0 @@
-E:\FPT Aptech\UWP\T2104E\DemoGridView\DemoGridView\DemoGridView.csproj;x86
