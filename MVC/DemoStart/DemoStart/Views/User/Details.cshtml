@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Details";
+
+    var viewData = ViewData["Message"];
+    var viewBag = ViewBag.Message;
+    var tempData = TempData["Message"];
+    
+    var products = new string[] { "Iphone", "Laptop", "Surface"};
+}
+
+<h3>The email ID is: john@mvcexample.com </h3>
+<h2>Details</h2>
+<p> ViewData: @viewData</p>
+<p> ViewBag: @viewBag</p>
+<p> TempData: @tempData</p>
+
+@Html.Partial("_DemoPartialView")
+
+@foreach (var item in products)
+{
+    <p>@item</p>
+}
+
+@Html.TextBox("Id")
+@Html.ActionLink("Details","Details","User");
+
+@{ Html.BeginForm("Search", "User", FormMethod.Post); }
+
+@Html.Label("Name: ")
+@Html.TextBox("Name")
+
+<button id="btnSearch" type="submit"> Search</button>
+
+@{ Html.EndForm(); }
+
+<p>@ViewBag.Name</p>
+    

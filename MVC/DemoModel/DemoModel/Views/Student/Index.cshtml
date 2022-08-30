@@ -1,0 +1,28 @@
+﻿@model DemoModel.Models.StudentRoom
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@foreach (var student in Model.Students)
+{
+    <p>@student.StudentId</p>
+    <p>@student.Fullname</p>
+    <p>@student.Gender</p>
+    <p>@student.Email</p>
+    <p>@student.Mobile</p>
+    <p>@student.Address</p>
+}
+
+
+@Html.LabelFor(m => m.Rooms.RoomId)
+<br />
+@Html.DisplayFor(m => m.Rooms.RoomId)
+<br />
+
+@Html.LabelFor(m => m.Rooms.RoomName)
+<br />
+@Html.DisplayFor(m => m.Rooms.RoomName)
+<br />
+
+

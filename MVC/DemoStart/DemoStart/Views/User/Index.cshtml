@@ -1,0 +1,18 @@
+﻿@using System.Web.UI.WebControls
+
+@{
+    ViewBag.Title = "Index";
+    var viewData = ViewData["Message"] != null
+        ? ViewData["Message"].ToString()
+        : "ViewData Message is null"; 
+    var viewBag = ViewBag.Message;
+    var tempData = TempData["Message"];
+}
+
+<h2>User Index</h2>
+<p> ViewData: @viewData</p>
+<p> ViewBag: @viewBag</p>
+<p> TempData: @tempData</p>
+
+@Html.Partial("_DemoPartialView")
+

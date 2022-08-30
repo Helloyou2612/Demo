@@ -27,3 +27,10 @@ DemoGridView/.vs/DemoGridView/v17/.suo
 /DemoUWPSQlite/ConsoleApp1
 /DemoUWPSQlite/DemoUWPSQlite/bin/x86/Debug
 /DemoUWPSQlite/DemoUWPSQlite/obj
+/MVC/DemoModel/packages
+/MVC/DemoModel/DemoModel/obj
+/MVC/DemoModel/DemoModel/bin
+/MVC/DemoStart/packages
+/MVC/DemoStart/DemoStart/obj
+/MVC/DemoStart/DemoStart/bin
+/DemoSplitView/.vs/DemoSplitView/v17/*.suo

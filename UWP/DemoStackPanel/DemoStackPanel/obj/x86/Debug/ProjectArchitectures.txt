@@ -1,0 +1,1 @@
+E:\FPT Aptech\UWP\T2104E\DemoStackPanel\DemoStackPanel\DemoStackPanel.csproj;x86

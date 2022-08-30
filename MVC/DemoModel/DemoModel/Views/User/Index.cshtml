@@ -1,0 +1,26 @@
+﻿@model DemoModel.Models.User
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>User Form</h2>
+@using (Html.BeginForm())
+{
+    <div>@Html.LabelFor(m => m.Id)</div>
+    <div>@Html.EditorFor(m => m.Id)</div>
+
+    <div>@Html.LabelFor(m => m.Fullname)</div>
+    <div>@Html.EditorFor(m => m.Fullname)</div>
+
+    <div>@Html.LabelFor(m => m.Email)</div>
+    <div>@Html.EditorFor(m => m.Email)</div>
+
+    <div>@Html.LabelFor(m => m.Mobile)</div>
+    <div>@Html.EditorFor(m => m.Mobile)</div>
+
+    <div>@Html.LabelFor(m => m.Address)</div>
+    <div>@Html.EditorFor(m => m.Address)</div>
+
+    <div><input type="submit" value="Save" /></div>
+}
+

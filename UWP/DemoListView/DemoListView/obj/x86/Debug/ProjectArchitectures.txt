@@ -1,0 +1,1 @@
+E:\FPT Aptech\UWP\T2104E\DemoListView\DemoListView\DemoListView.csproj;x86

@@ -1,0 +1,1 @@
+E:\FPT Aptech\UWP\DemoUWP\DemoUWP\DemoUWP.csproj;x64
